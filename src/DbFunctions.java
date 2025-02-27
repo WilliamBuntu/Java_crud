@@ -52,6 +52,7 @@ public class DbFunctions {
         Statement statement;
         ResultSet resultSet;
         try {
+
             String query = String.format("SELECT * FROM %s", table_name);
             statement = conn.createStatement();
           resultSet = statement.executeQuery(query);
