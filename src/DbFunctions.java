@@ -65,10 +65,10 @@ public class DbFunctions {
         }
     }
     // update data
-    public void update_data(Connection conn, String table_name, String old_name, String new_name){
+    public void update_data(Connection conn, String table_name, int id, String new_name){
         Statement statement;
         try {
-            String query = String.format("UPDATE %s SET name = '%s' WHERE name = %s", table_name, new_name, old_name);
+            String query = String.format("UPDATE %s SET name = '%s' WHERE emp_id = %d", table_name, new_name, id);
             statement = conn.createStatement();
             statement.executeUpdate(query);
             System.out.println("Data updated successfully");
