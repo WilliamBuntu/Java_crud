@@ -7,7 +7,9 @@ public class Main {
        Connection conn = db.connect("newDB", "postgres", "123456");
        //       db.createTable(conn, "employee");
 //         db.insert_row(conn, "employee", "Travis", "23kg, Gikondo, avenue 5");
-        db.update_data(conn, "employee", 4, "Mr Robot");
+//        db.update_data(conn, "employee", 4, "Mr Robot");
         db.read_data(conn, "employee");
+//        db.search_data(conn, "employee", "Travis");
+//        db.delete_data(conn, "employee", 4);
     }
 }

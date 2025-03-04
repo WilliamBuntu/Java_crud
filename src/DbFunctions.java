@@ -76,4 +76,43 @@ public class DbFunctions {
             System.out.println(e.getMessage());
         }
     }
+    // select data
+    public void search_data(Connection conn, String table_name, String name){
+        Statement statement;
+        ResultSet resultSet;
+        try {
+            String query = String.format("SELECT * FROM %s WHERE name = '%s'", table_name, name);
+            statement = conn.createStatement();
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                System.out.println("ID: " + resultSet.getInt("emp_id") + " Name: " + resultSet.getString("name") + " Address: " + resultSet.getString("address"));
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    // delete data
+    public void delete_data(Connection conn, String table_name, int id){
+        Statement statement;
+        try {
+            String query = String.format("DELETE FROM %s WHERE emp_id = %d", table_name, id);
+            statement = conn.createStatement();
+            statement.executeUpdate(query);
+            System.out.println("Data deleted successfully");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    // delete table
+    public void delete_table(Connection conn, String table_name){
+        Statement statement;
+        try {
+            String query = String.format("DROP TABLE %s", table_name);
+            statement = conn.createStatement();
+            statement.executeUpdate(query);
+            System.out.println("Table deleted successfully");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
